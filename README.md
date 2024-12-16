@@ -14,7 +14,7 @@ El servidor usa una base H2, la cual es accesible desde la ruta `localhost:8080/
 Para llevar a cabo la conexión, deben de estar presentes estos parámetros:
   - JDBC URL --> jdbc:h2:mem:testdb
   - User name --> sa
-  - Passord --> (se debe dejar en blanco, no hay contraseña)
+  - Password --> (se debe dejar en blanco, no hay contraseña)
 
 Una vez conectados, podemos hacer queries para comprobar el estado de las tablas en cualquier momento.
 
@@ -23,8 +23,8 @@ Una vez conectados, podemos hacer queries para comprobar el estado de las tablas
 Se ha creado una colección de Postman (se puede encontrar en este mismo directorio, en [INDITEX.postman_collection.json](INDITEX.postman_collection.json)). Esta colección debe importarse en Postman, y contiene 7 casuísticas:
 
 - Las 5 casuísticas pedidas en el enunciado
-- Un bad case de BAD REQUEST donde no se encuentra ninguna entrada de base de datos con esos datos de entrada
-- Un bad case de NOT FOUND donde la fecha no cumple con el formato esperado. Por favor, siéntase libre de experimentar con los formatos de los 3 datos de entrada para ver como se comporta el servidor delante de dichos formatos.
+- Un bad case de NOT FOUND  donde no se encuentra ninguna entrada de base de datos con esos datos de entrada
+- Un bad case de BAD REQUEST donde la fecha no cumple con el formato esperado. Por favor, siéntase libre de experimentar con los formatos de los 3 datos de entrada para ver como se comporta el servidor delante de dichos formatos.
 
 ### 1.5. SwaggerUI
 El proyecto ha sido configurado para usar SwaggerUI, siendo accesible en `http://localhost:8080/swagger-ui/index.html`. También siéntase libre de usar esta UI para experimentar con diferentes requests y ver el comportamiento del servidor.
