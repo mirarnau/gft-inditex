@@ -24,12 +24,12 @@ public class ProductPriceMapper {
 
     public static ProductPrice toProductPrice(final ProductPriceJpa productPriceJpa) {
         return ProductPrice.builder()
-                .brandId(productPriceJpa.brand().id())
-                .startDate(productPriceJpa.startDate())
-                .endDate(productPriceJpa.endDate())
-                .priceList(productPriceJpa.priceList())
-                .productId(productPriceJpa.productId())
-                .price(productPriceJpa.price())
+                .brandId(productPriceJpa.getBrand().getId())
+                .startDate(productPriceJpa.getStartDate().toString())
+                .endDate(productPriceJpa.getEndDate().toString())
+                .priceList(productPriceJpa.getPriceList())
+                .productId(productPriceJpa.getProductId())
+                .price(productPriceJpa.getPrice())
                 .build();
     }
 

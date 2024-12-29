@@ -3,8 +3,10 @@ package com.gft_inditex.product_pricing_server.application.model.jpa.brand;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -17,9 +19,5 @@ public class BrandJpa {
     private Long id;
     @Column(name = "name")
     private String name;
-
-    public long id() {
-        return id;
-    }
 
 }

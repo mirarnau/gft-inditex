@@ -4,11 +4,13 @@ import com.gft_inditex.product_pricing_server.application.model.jpa.brand.BrandJ
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -34,29 +36,5 @@ public class ProductPriceJpa {
     private Integer priority;
     @Column(name = "price")
     private BigDecimal price;
-
-    public BrandJpa brand() {
-        return brand;
-    }
-
-    public String startDate() {
-        return startDate.toString();
-    }
-
-    public String endDate() {
-        return endDate.toString();
-    }
-
-    public int priceList() {
-        return priceList;
-    }
-
-    public int productId() {
-        return productId;
-    }
-
-    public Number price() {
-        return price;
-    }
 
 }
