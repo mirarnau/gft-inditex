@@ -38,3 +38,57 @@ Situése en este mismo directorio y ejecute `docker build -t inditex:v1 .` para 
 - La aplicación ha sido desarrollada con Arquitectura Hexagonal y DDD, procurando seguir las mejores prácticas de clean code y SOLID.
 - La estructura de ficheros marca claramente la separación entre las capas de Infraestructura, Aplicación y Dominio. La capa de infraestructura contiene el Controller (junto con su Advice), el repositorio de JPA y la configuración de SwaggerUI. La capa de aplicación contiene, entre otras cosas, un solo caso de uso que orquesta a servicios de dominio (en este caso solo 1) y los modelos de datos que entran y salen de Infraestructura, de tal manera que no están vinculados a Dominio. Finalmente, la capa de Dominio contiene servicios de dominio, junto a Entidades y ValueObjects. Estos últimos contienen una serie de validaciones a corde con la lógica de dominio, y suponen la capa de protección para que no entren datos indeseables a la capa más interna de la aplicación.
 - Se ha delegado al máximo la responsabilidad sobre la query de búsqueda de base de datos a la capa de infraestructura y, por lo tanto, a la query SQL del repositorio de JPA. De esta manera aumentamos el rendimiento y velocidad.
+
+
+# INDITEX Product Pricing API Documentation
+
+Esta API permite obtener el precio aplicable de un producto en un momento dado, basado en su identificador, la marca, y la fecha solicitada.
+
+---
+
+## Endpoint
+
+### `POST /inditex/products/price`
+
+**Descripción**: Calcula el precio aplicable para un producto en función de la fecha, el identificador del producto y la marca.
+
+#### Request Body
+El cuerpo de la solicitud debe incluir los siguientes datos en formato JSON:
+
+| Campo        | Tipo   | Descripción                                 | Ejemplo                 |
+|--------------|--------|---------------------------------------------|-------------------------|
+| `date`       | string | Fecha para la que se solicita el precio | `2020-06-14T16:00:00`|
+| `productId`  | int    | Identificador único del producto.           | `35455`                 |
+| `brandId`    | int    | Identificador único de la marca.            | `1`                     |
+
+#### Ejemplo de Solicitud
+```json
+{
+  "date": "2020-06-14T16:00:00",
+  "productId": 35455,
+  "brandId": 1
+}
+
+```
+#### Response Body
+
+El cuerpo de la respuesta del servidor incluye estos campos:
+
+| Campo         | Tipo    | Descripción                                     | Ejemplo                 |
+|---------------|---------|-------------------------------------------------|-------------------------|
+| `productId`   | int     | Identificador único del producto.               | `35455`                 |
+| `brandId`     | int     | Identificador único de la marca.                | `1`                     |
+| `rateId`      | int     | Identificador de la tarifa aplicable.           | `1`                     |
+| `startDate`   | string  | Fecha de inicio de validez de la tarifa.         | `2023-12-01T00:00:00`   |
+| `endDate`     | string  | Fecha de fin de validez de la tarifa.            | `2023-12-31T23:59:59`   |
+| `price`       | number  | Precio calculado del producto.                  | `35.50`                 |
+
+#### Mapeo de Excepciones
+La API contempla las siguientes excepciones
+
+| Código HTTP | Mensaje            | Mensaje detallado                                                                                                                                                  | Descripción                                                                                                             |
+|-------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `404`       | Not found          | `{"statusCode": "404", "message": "Not found", "detailedMessage": "No price was found for product with ID: 35456 for brand with ID: 1 on date: 2020-06-14T10:00"}` | No se encontró un precio en la base de datos para los parámetros proporcionados.                                        |
+| `400`       | Invalid parameter  | `{"statusCode": "400", "message": "Invalid parameter", "detailedMessage": "RequestedDate format is invalid. 30220-06-14 10:005:00 does not comply with  regex."}`  | El formato de la fecha proporcionada es inválido.                                                                       |
+| `400`       | Invalid parameter  | `{"statusCode": "400", "message": "Invalid parameter", "detailedMessage": "ProductId must not be a negative value"}`                                               | El ID del producto debe ser un valor positivo.                                                                          |
+| `400`       | Invalid parameter  | `{"statusCode": "400", "message": "Invalid parameter", "detailedMessage": "BrandId must not be a negative value"}`                                                 | El ID de la marca debe ser un valor positivo.                                                                           |
