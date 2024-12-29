@@ -12,9 +12,9 @@ import java.util.Optional;
 public interface JpaPriceRepository extends JpaRepository<ProductPriceJpa, Long> {
 
     @Query("SELECT pp FROM ProductPriceJpa pp " +
-            "WHERE pp.brand.id.value = ?1 " +
-            "AND pp.productId.value = ?2 " +
-            "AND ?3 BETWEEN pp.startDate.value AND pp.endDate.value " +
+            "WHERE pp.brand.id = ?1 " +
+            "AND pp.productId = ?2 " +
+            "AND ?3 BETWEEN pp.startDate AND pp.endDate " +
             "ORDER BY pp.priority DESC " +
             "LIMIT 1")
     Optional<ProductPriceJpa> getProductPrice(Long brandId, Integer productId, LocalDateTime requestedDate);

@@ -1,10 +1,6 @@
 package com.gft_inditex.product_pricing_server.application.model.jpa.brand;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,10 +13,13 @@ public class BrandJpa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BrandIdJpa id;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "name")
+    private String name;
 
     public long id() {
-        return id.value();
+        return id;
     }
 
 }

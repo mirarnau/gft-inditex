@@ -9,10 +9,11 @@ class BrandJpaTest {
     @Test
     void givenValidValue_whenConstructorIsCalled_thenReturnsBrandJpa() {
         // Given
-        final BrandIdJpa value = BrandIdJpaMock.validBrandIdJpa();
+        final Long id = BrandJpaMock.ID;
+        final String name = BrandJpaMock.NAME;
 
         // When
-        final BrandJpa brandJpa = new BrandJpa(value);
+        final BrandJpa brandJpa = new BrandJpa(id, name);
 
         // Then
         Assertions.assertNotNull(brandJpa);
@@ -23,7 +24,7 @@ class BrandJpaTest {
         // Given null
 
         // When
-        final Executable executable = () -> new BrandJpa(null);
+        final Executable executable = () -> new BrandJpa(null, null);
 
         // Then
         Assertions.assertDoesNotThrow(executable);
