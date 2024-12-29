@@ -5,6 +5,8 @@
 Abrir una terminal en la misma ruta que este fichero, y ejecutar el comando
 `mvn clean install`. El proyecto contiene 76 tests unitarios, que se ejecutarán también como resultado del comando anterior.
 
+NOTA: Puede consultar el coverage de los test accediendo al fichero /Coverage/index.html
+
 ### 1.2. Ejecutar el programa
 A continuación, vamos a levantar el servidor en el puerto 8080 mediante el siguiente comando:
 `mvn spring-boot:run`.

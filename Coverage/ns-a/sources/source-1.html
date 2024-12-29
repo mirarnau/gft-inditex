@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProductPrice</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.gft_inditex.product_pricing_server.domain.entity</a>
+</div>
+
+<h1>Coverage Summary for Class: ProductPrice (com.gft_inditex.product_pricing_server.domain.entity)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductPrice</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ProductPrice$ProductPriceBuilder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (28/28)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.gft_inditex.product_pricing_server.domain.entity;
+&nbsp;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.brand.BrandId;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.productprice.EndDate;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.productprice.Price;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.productprice.PriceList;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.productprice.ProductId;
+&nbsp;import com.gft_inditex.product_pricing_server.domain.valueobject.productprice.StartDate;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;
+<b class="fc">&nbsp;@AllArgsConstructor</b>
+&nbsp;public class ProductPrice {
+&nbsp;
+&nbsp;    private BrandId brandId;
+&nbsp;    private StartDate startDate;
+&nbsp;    private EndDate endDate;
+&nbsp;    private PriceList priceList;
+&nbsp;    private ProductId productId;
+&nbsp;    private Price price;
+&nbsp;
+&nbsp;    public long brandId() {
+<b class="fc">&nbsp;        return brandId.value();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String startDate() {
+<b class="fc">&nbsp;        return startDate.value().toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String endDate() {
+<b class="fc">&nbsp;        return endDate.value().toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int priceList() {
+<b class="fc">&nbsp;        return priceList.value();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int productId() {
+<b class="fc">&nbsp;        return productId.value();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Number price() {
+<b class="fc">&nbsp;        return price.value();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static ProductPriceBuilder builder() {
+<b class="fc">&nbsp;        return new ProductPriceBuilder();</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public static class ProductPriceBuilder {</b>
+&nbsp;        private long brandIdValue;
+&nbsp;        private String startDateValue;
+&nbsp;        private String endDateValue;
+&nbsp;        private int priceListValue;
+&nbsp;        private int productIdValue;
+&nbsp;        private Number priceValue;
+&nbsp;
+&nbsp;        public ProductPriceBuilder brandId(final long brandIdValue) {
+<b class="fc">&nbsp;            this.brandIdValue = brandIdValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPriceBuilder startDate(final String startDateValue) {
+<b class="fc">&nbsp;            this.startDateValue = startDateValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPriceBuilder endDate(final String endDateValue) {
+<b class="fc">&nbsp;            this.endDateValue = endDateValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPriceBuilder priceList(final int priceListValue) {
+<b class="fc">&nbsp;            this.priceListValue = priceListValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPriceBuilder productId(final int productIdValue) {
+<b class="fc">&nbsp;            this.productIdValue = productIdValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPriceBuilder price(final Number priceValue) {
+<b class="fc">&nbsp;            this.priceValue = priceValue;</b>
+<b class="fc">&nbsp;            return this;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public ProductPrice build() {
+<b class="fc">&nbsp;            final BrandId brandId = new BrandId(brandIdValue);</b>
+<b class="fc">&nbsp;            final StartDate startDate = new StartDate(startDateValue);</b>
+<b class="fc">&nbsp;            final EndDate endDate = new EndDate(endDateValue);</b>
+<b class="fc">&nbsp;            final PriceList priceList = new PriceList(priceListValue);</b>
+<b class="fc">&nbsp;            final ProductId productId = new ProductId(productIdValue);</b>
+<b class="fc">&nbsp;            final Price price = new Price(priceValue);</b>
+<b class="fc">&nbsp;            return new ProductPrice(</b>
+&nbsp;                    brandId,
+&nbsp;                    startDate,
+&nbsp;                    endDate,
+&nbsp;                    priceList,
+&nbsp;                    productId,
+&nbsp;                    price
+&nbsp;            );
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-12-29 19:36</div>
+</div>
+</body>
+</html>
