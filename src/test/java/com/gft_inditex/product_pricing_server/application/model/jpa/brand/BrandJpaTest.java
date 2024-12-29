@@ -17,6 +17,8 @@ class BrandJpaTest {
 
         // Then
         Assertions.assertNotNull(brandJpa);
+        Assertions.assertNotNull(brandJpa.getId());
+        Assertions.assertNotNull(brandJpa.getName());
     }
 
     @Test
